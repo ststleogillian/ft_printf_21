@@ -81,8 +81,5 @@ void    parse_spec(t_list *info, const char **ptr)
 {
     info->spec = **ptr;
     if (ft_find_flags("cspdiuxX%%", **ptr))
-    {
-        printf("- lst symbol - %c\n", **ptr);
         (*ptr)++;
-    }
 }

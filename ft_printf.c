@@ -1,12 +1,12 @@
 #include "ft_printf.h"
 
-static void ft_print_struct(t_list *info)
-{
-    printf("flags - %5u\n", info->flags);
-    printf("width - %5d\n", info->width);
-    printf("precision - %5d\n", info->precision);
-    printf("spec - %5c\n", info->spec);
-}
+// static void ft_print_struct(t_list *info)
+// {
+//     printf("flags - %5u\n", info->flags);
+//     printf("width - %5d\n", info->width);
+//     printf("precision - %5d\n", info->precision);
+//     printf("spec - %5c\n", info->spec);
+// }
 
 static t_list *create_list(void)
 {
@@ -28,7 +28,7 @@ static void parsestruct(const char **ptr, va_list ap, t_list *info)
     parse_width(info, ptr, ap);
     parse_precision(info, ptr, ap);
     parse_spec(info, ptr);
-    ft_print_struct(info);
+    // ft_print_struct(info);
 }
 
 static void  writespec(const char **ptr, va_list ap, t_list *info)
@@ -36,14 +36,14 @@ static void  writespec(const char **ptr, va_list ap, t_list *info)
     parsestruct(ptr, ap, info);
     if (info->spec == 'c')
         print_char(info, ap);
-    // else if (info->spec == 's')
-    //     print_string(info, ap);
-    // else if (ft_find_flags("diu", info->spec))
-    //     print_number(info, ap, 10);
-    // else if (ft_find_flags("xXp", info->spec))
-    //     print_number(info, ap, 16);
-    // else if (info->spec == '%')
-    //     print_percent(info);
+    else if (info->spec == 's')
+        print_string(info, ap);
+    else if (ft_find_flags("diu", info->spec))
+        print_number(info, ap, 10);
+    else if (ft_find_flags("xXp", info->spec))
+        print_number(info, ap, 16);
+    else if (info->spec == '%')
+        print_percent(info);
 }
 
 int     ft_printf(const char *format, ...)

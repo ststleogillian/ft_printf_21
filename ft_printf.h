@@ -31,5 +31,10 @@ void    parse_precision(t_list *info, const char **ptr, va_list ap);
 void    parse_spec(t_list *info, const char **ptr);
 int     ft_find_flags(char *where, char what);
 void    print_char(t_list *info, va_list ap);
+void    print_percent(t_list *info);
+void    print_string(t_list *info, va_list ap);
+void    print_number(t_list *info, va_list ap, int base);
+size_t  ft_strlen(const char *);
+
 
 # endif

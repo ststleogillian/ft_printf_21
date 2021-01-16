@@ -3,14 +3,16 @@ CC = gcc
 CFLAGS = -c -Wall -Wextra -Werror
 SOURCES =		ft_printf.c\
 				ft_parse.c\
-				ft_print_1.c
+				ft_print_1.c\
+				ft_print_2.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	ar rc $@ $^
+	make -C libft/
+	ar rc $@ $^ libft/*.o
 	ranlib $@
 
 %.o: %.c 
